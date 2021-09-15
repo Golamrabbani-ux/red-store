@@ -1,0 +1,28 @@
+.useredit-container {
+  margin: 3rem auto;
+  display: flex;
+  justify-content: center;
+  .useredit {
+    width: 450px;
+    h2 {
+      margin-bottom: 1rem;
+    }
+    label {
+      font-weight: 700;
+    }
+    input {
+      width: 100%;
+      display: inline;
+      padding: 13px 10px;
+      font-size: 17px;
+      opacity: 0.65;
+      border: 1px solid #e5e7eb;
+      margin-bottom: 10px;
+    }
+    .checkbox {
+      width: auto;
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+  }
+}

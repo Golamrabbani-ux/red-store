@@ -1,0 +1,188 @@
+@import "../utils/all.scss";
+header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: $white;
+  @include border(1px, solid, $border_color);
+  z-index: 999;
+  navbar {
+    height: 4.2rem;
+    display: flex;
+    align-items: center;
+    .logo {
+      margin-top: 4px;
+    }
+    nav {
+      flex: 1;
+      text-align: left;
+      margin-left: 30px;
+      ul {
+        li {
+          display: inline-block;
+          padding: 6px 10px;
+          a {
+            font-size: 18px;
+            color: $link_color;
+          }
+        }
+      }
+    }
+    .search-area {
+      position: relative;
+      .search-btn {
+        padding: 8px;
+        background-color: $gray_color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        .search-icon {
+          width: 18px;
+          height: 18px;
+        }
+      }
+      .search-content {
+        width: 300px;
+        height: 80px;
+        position: absolute;
+        right: 0;
+        margin-top: 13px;
+        input {
+          width: 100%;
+          position: relative;
+          padding: 12px 15px;
+          background-color: $gray_color;
+          @include border(1px, solid, $border_color);
+          border-radius: 10px;
+        }
+        .search-icon-in {
+          width: 18px;
+          height: 18px;
+          position: absolute;
+          right: 20px;
+          top: 14%;
+        }
+      }
+    }
+    .nav-icon {
+      width: 28px;
+      height: 28px;
+      margin: 0 15px;
+      cursor: pointer;
+      border-radius: 9999px;
+    }
+    .dropdown {
+      margin-left: 15px;
+      z-index: 999;
+      .dropdown-user {
+        position: relative;
+        display: block;
+        cursor: pointer;
+        transition-duration: 0.5s;
+        img {
+          width: 28px;
+          height: 28px;
+          cursor: pointer;
+          border-radius: 9999px;
+        }
+        .login-user {
+          display: flex;
+          align-items: center;
+          h4 {
+            margin-left: 10px;
+          }
+        }
+        .dropdown-menu {
+          width: 240px;
+          visibility: hidden;
+          position: absolute;
+          right: 0;
+          opacity: 0;
+          display: block;
+          background-color: $white;
+          box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+          cursor: default;
+          .dropdown-content {
+            h4 {
+              padding: 0 1rem;
+              margin-top: 1rem;
+              font-size: 20px;
+              font-weight: 500;
+              line-height: 40px;
+            }
+            .form {
+              padding: 1rem 1rem;
+              width: 100%;
+              input {
+                width: 100%;
+              }
+              .login-btn {
+                width: 100%;
+                display: block;
+                text-align: center;
+                padding: 1rem 0;
+                margin-top: 0.7rem;
+                margin-bottom: 0.3rem;
+                font-size: 16px;
+                font-weight: 600;
+                text-transform: uppercase;
+                background-color: $dodgerblue;
+                color: $white;
+                border-radius: 2px;
+              }
+            }
+            ul {
+              margin-top: 20px;
+              a {
+                color: $link_color;
+                &::hover {
+                  li {
+                    background-color: tomato;
+                  }
+                }
+                li {
+                  padding: 10px 25px;
+                  margin-bottom: 5px;
+                }
+              }
+              p {
+                cursor: pointer;
+                padding: 10px 25px;
+                margin-bottom: 5px;
+              }
+            }
+          }
+        }
+      }
+      &:hover {
+        .dropdown-menu {
+          visibility: visible;
+          opacity: 1;
+          display: block;
+        }
+      }
+      @media (max-width: 768px) {
+        .login-user {
+          h4 {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .icon-top {
+    position: relative;
+    span {
+      width: 28px;
+      position: absolute;
+      top: -13px;
+      left: 62%;
+      font-size: 14px;
+      text-align: center;
+      background-color: $main_btn_bg_color;
+      border-radius: 9px;
+      color: $white;
+    }
+  }
+}

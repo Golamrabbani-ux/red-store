@@ -1,0 +1,8 @@
+@import "../utils/all.scss";
+footer {
+  color: $link_color;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+  @include border(1px, solid, $border_color);
+}

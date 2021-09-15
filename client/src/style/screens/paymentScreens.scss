@@ -1,0 +1,33 @@
+.payment-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin-top: 1.3rem;
+  .payment-system {
+    grid-column: 1 / 8;
+    h2 {
+      margin: 1rem 0;
+    }
+    .payment-input {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      input {
+        margin-bottom: 0px;
+      }
+      label {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+  .calculation {
+    grid-column: 8 / 12;
+  }
+  @media (max-width: 768px) {
+    .payment-system {
+      grid-column: 1 / 12;
+    }
+    .calculation {
+      grid-column: 1 / 12;
+    }
+  }
+}

@@ -1,0 +1,102 @@
+@import "../utils/all.scss";
+button {
+  border: 0;
+}
+.btn {
+  display: inline-block;
+  border: 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-primary {
+  @extend .btn;
+  padding: 8px 20px;
+  background-color: $success_bg_color;
+  color: $black;
+  border-radius: 5px;
+}
+.btn-danger {
+  @extend .btn;
+  padding: 8px 20px;
+  background-color: $danger_bg_color;
+  color: $white;
+  border-radius: 5px;
+}
+.btn-checkout {
+  @extend .btn;
+  width: 100%;
+  padding: 12px 0;
+  font-weight: 700;
+  background-color: $main_btn_bg_color;
+  color: $white;
+}
+.btn-black {
+  @extend .btn;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 17px;
+  background-color: $black;
+  color: $white;
+}
+.btn-cancel {
+  @extend .btn;
+  padding: 0.6rem 1.6rem;
+  font-size: 17px;
+  color: $black;
+  @include border(2px, solid, $border_color);
+  border-radius: 5px;
+}
+.btn-save {
+  @extend .btn;
+  padding: 0.7rem 1.6rem;
+  font-size: 17px;
+  background-color: $black;
+  color: $white;
+  @include border(2px, solid, $border_color);
+  border-radius: 5px;
+}
+.edit-btn {
+  @extend .btn;
+  padding: 0.5rem 0.7rem;
+  background-color: $white;
+  &:hover {
+    background-color: $gray_100;
+  }
+}
+.btn-trash {
+  @extend .btn;
+  padding: 0.5rem 0.7rem;
+  background-color: $danger_bg_color;
+  color: $white;
+  &:hover {
+    background-color: $white;
+    color: $danger_bg_color;
+  }
+}
+.btn-disabled {
+  cursor: not-allowed;
+}
+
+input {
+  outline: 0;
+  padding: 7px 10px;
+  margin-bottom: 10px;
+}
+select {
+  padding: 8px 25px;
+  margin: 0 10px;
+  background-color: $gray_color;
+  outline: 0;
+  border: 0;
+  border-radius: 5px;
+}
+.error{
+  color: $danger_bg_color;
+}
+.show-hide-password-btn{
+  position: absolute;
+  top: 40%;
+  right: 2%;
+  color: $password_icon_color;
+  cursor: pointer;
+}

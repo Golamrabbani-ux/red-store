@@ -1,0 +1,49 @@
+@import "../utils/mixin.scss";
+.productdetails {
+  .product-img-container {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+  .product-content {
+    h1 {
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+    h5 {
+      text-transform: uppercase;
+      color: $link_color;
+      margin-bottom: 10px;
+    }
+    .price-available {
+      display: flex;
+      margin-top: 13px;
+      h2 {
+        margin-right: 15px;
+      }
+    }
+    .description-details-container {
+      margin-top: 20px;
+      line-height: 50px;
+      @include borderbottom(1px, solid, $border_color);
+      span {
+        font-size: 16px;
+        font-weight: 600;
+        color: $link_color;
+        cursor: pointer;
+      }
+      .details-nav {
+        margin-left: 30px;
+      }
+    }
+    p {
+      margin-top: 20px;
+    }
+    .qty-area {
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

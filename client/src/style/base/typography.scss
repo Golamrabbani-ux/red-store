@@ -1,0 +1,24 @@
+@import "./variables.scss";
+h1 {
+  font-size: 60px;
+  line-height: 40px;
+  font-weight: 600;
+}
+h2 {
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: 500;
+}
+h5 {
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 500;
+}
+p {
+  color: $link_color;
+  padding-right: 100px;
+}
+label {
+  display: block;
+  color: $link_color;
+}

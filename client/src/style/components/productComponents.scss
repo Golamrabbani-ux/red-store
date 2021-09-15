@@ -1,0 +1,57 @@
+// @import "../base/variables.scss";
+.product-card {
+  width: 100%;
+  background-color: $gray_color;
+  overflow: hidden;
+  transition: all 0.3s;
+  &:hover {
+    overflow: visible;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+      rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    transform: translateY(-6px);
+  }
+  .product-img {
+    img {
+      width: 100%;
+    }
+  }
+  .product-content {
+    padding: 1rem 1.3rem;
+    h4 {
+      color: $link_color;
+      padding-right: 20px;
+      text-transform: capitalize;
+    }
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.6rem;
+      h2 {
+        color: $title_color_primary;
+        font-size: 22px;
+        font-weight: 600;
+      }
+      button {
+        margin: 0 0.2rem;
+        .cart-icon {
+          width: 32px;
+          height: 32px;
+        }
+      }
+    }
+  }
+  /*Media Query */
+  @media (min-width: 768px) {
+    height: 340px;
+  }
+  @media (min-width: 992px) {
+    height: 350px;
+  }
+  @media (min-width: 1200px) {
+    height: 360px;
+  }
+  @media (min-width: 1400px) {
+    height: 385px;
+  }
+}

@@ -1,0 +1,13 @@
+.step-con {
+  display: flex;
+  margin-top: 1.3rem;
+  .step {
+    padding-right: 2rem;
+    display: flex;
+    align-items: center;
+    a,
+    span {
+      padding-right: 0.3rem;
+    }
+  }
+}
