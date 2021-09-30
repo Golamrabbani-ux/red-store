@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
 
 
-const Search = () => {
+const Search = ({displayShow}) => {
     const navigate = useNavigate();
     const [keyword, setKeyword] = useState('');
 
@@ -20,7 +20,7 @@ const Search = () => {
             <div className="search-box">
                 <form
                     onSubmit={submitHandler}
-                    className="search-form"
+                    className={displayShow ? "search-form display-show" : 'search-form'}
                 >
                     <input 
                         type="text" 

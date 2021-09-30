@@ -26,6 +26,12 @@
         display: none;
       }
     }
+    .display-show{
+      display: block;
+      @media (min-width: 576px) {
+        display: none;
+      }
+    }
     .search-icon {
       width: 18px;
       height: 18px;

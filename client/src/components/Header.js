@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import logo from '../assests/image/logo.png';
 import Search from './Search';
@@ -9,6 +9,8 @@ import Cart from './Cart';
 import Whitelist from './Whitelist';
 
 const Header = () => {
+    const [searchToggle, setSearchToggle] = useState(false);
+
 
     return (
         <header>
@@ -17,20 +19,20 @@ const Header = () => {
                 style={{marginBottom: 0}}
             >
                 <navbar className={'navbar-flex-between'}>
-                    
                     <div className="logo">
                         <Link to="/">
                             <img src={logo} alt="Red Store" width="100px" />
                         </Link>
                     </div>
 
-                        <div className='search-area'>
-                            <Search />
-                        </div>
+                    <div className='search-area'>
+                        <Search />
+                    </div>
 
                     <div style={{display: 'flex'}}>
                         <div 
                             className="search-toogle"
+                            onClick={()=>setSearchToggle(!searchToggle)}
                         >
                             <svg
                                 className="nav-icon"
@@ -53,8 +55,15 @@ const Header = () => {
                             <AdminDropdown />  
                         </>
                     </div> 
-                       
                 </navbar>
+                {
+                    searchToggle &&
+                    <div className='search-area-full'>
+                        <Search 
+                            displayShow={true}
+                        />
+                    </div>
+                }
             </div>
         </header>
     );
