@@ -23,8 +23,10 @@
     padding: 3rem 2rem;
   }
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
     .right-side-content {
+      grid-column: 1 / -1;
+    }
+    .left-side-content {
       grid-column: 1 / -1;
     }
   }

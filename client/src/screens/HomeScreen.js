@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router';
 import Loader from '../components/Loader';
 import Meta from '../components/Meta';
 import ProductComponent from '../components/ProductComponent';
-import Slider from '../components/Slider';
 import { listProducts } from '../redux/action/productsAction';
 
 const HomeScreen = () => {
@@ -27,7 +26,6 @@ const HomeScreen = () => {
             <Meta 
                 title={keyword && `Red store | ${keyword}`} 
             />
-            <Slider />
             {loading && <Loader />}
             {
                 keyword && 
@@ -39,7 +37,6 @@ const HomeScreen = () => {
                     Home
                 </button>
             }
-            {error && <span className="error">{error.message}</span>}
             {
                 products.length > 0 &&
                 <div className="row" style={{ marginTop: '50px' }}>
@@ -53,6 +50,20 @@ const HomeScreen = () => {
                     }
                 </div>
             }
+            <div
+                style={{
+                    height: '60vh',
+                    display:'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}
+            >
+                {error && <span className="error">{error.message}</span>}
+                {
+                    products.length === 0 && !loading && !error &&
+                    <h2 className="error">Products not found!</h2>
+                }
+            </div>
         </>
     );
 };

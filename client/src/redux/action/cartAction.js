@@ -39,7 +39,7 @@ export const shippingAddressSave = (address) => {
             type: USER_SHIPPING_ADDRESS,
             payload: address
         })
-        localStorage.setItem('shippingAddress', JSON.stringify(getState()?.cart?.shippingAddress))
+        localStorage.setItem('shippingAddress', JSON.stringify(getState()?.cart?.shippingAddress));
     }
 }
 

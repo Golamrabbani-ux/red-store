@@ -15,6 +15,7 @@ const LoginScreen = () => {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordShow, setPasswordShow] = useState(false);
     const { loading, userInfo } = useSelector(state => state?.userLogin);
 
     const redirect = location?.search ? location?.search?.split('=')[1] : '/';
@@ -28,7 +29,7 @@ const LoginScreen = () => {
     const submitHandler = (e) => {
         e.preventDefault();
         const userInfo = { email, password };
-        dispatch(userLogin(userInfo))
+        dispatch(userLogin(userInfo));
     }
 
     const responseGoogle = (response) => {
@@ -45,8 +46,8 @@ const LoginScreen = () => {
     return (
         <>
             <Meta
-                    title={`Red Store | Signin`}
-                    keywords={'Shopping cart'}
+                title={`Red Store | Signin`}
+                keywords={'Shopping cart'}
             />
             <div className="sign-signup-area" >
                 <div className="withdraw-image">
@@ -64,12 +65,19 @@ const LoginScreen = () => {
                                 setEmail(e?.target?.value)
                             }}
                         />
-                        <input
-                            type="password"
-                            required
-                            placeholder="password"
-                            onChange={(e) => setPassword(e?.target?.value)}
-                        />
+                        <div className='input-area'>
+                            <input
+                                type={passwordShow ? 'text' : 'password'}
+                                required
+                                placeholder="password"
+                                onChange={(e) => setPassword(e?.target?.value)}
+                            />
+                            <i 
+                                className={`show-hide-password-btn ${passwordShow ?  'fas fa-eye' : 'fas fa-eye-slash'}`}
+                                onClick={() =>setPasswordShow(!passwordShow)}
+                            />
+                        </div>
+
                         <button
                             className={loading ? 'btn btn-black btn-disabled' : 'btn btn-black'}
                             type={loading ? 'button' : 'submit'}

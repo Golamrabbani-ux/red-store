@@ -15,6 +15,7 @@ const SignupScreen = () => {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordShow, setPasswordShow] = useState(false);
     const { userInfo } = useSelector(state => state?.userLogin);
     const { loading: registerLoading } = useSelector(state => state?.userRegister);
 
@@ -82,12 +83,18 @@ const SignupScreen = () => {
                             placeholder="example@gmail.com"
                             onChange={(e) => setEmail(e?.target?.value)}
                         />
-                        <input
-                            type="password"
-                            required
-                            placeholder="password"
-                            onChange={(e) => setPassword(e?.target?.value)}
-                        />
+                        <div className='input-area'>
+                            <input
+                                type={passwordShow ? 'text' : 'password'}
+                                required
+                                placeholder="password"
+                                onChange={(e) => setPassword(e?.target?.value)}
+                            />
+                            <i 
+                                className={`show-hide-password-btn ${passwordShow ?  'fas fa-eye' : 'fas fa-eye-slash'}`}
+                                onClick={() =>setPasswordShow(!passwordShow)}
+                            />
+                        </div>
 
                         <button
                             className={registerLoading ? 'btn btn-black btn-disabled' : 'btn btn-black'}

@@ -29,12 +29,11 @@ const OrderListScreen = () => {
             {
                 loading ? <Loader />
                 :
-                <div className="order-container">
+                <div className='userlist-container'>
                     <h2>Order</h2>
-                    <div style={{ overflowX: 'auto' }}>
-                        <table>
+                    <table className='table'>
                             <thead>
-                                <tr>
+                                <tr className='thead'>
                                     <th>ID</th>
                                     <th>Date</th>
                                     <th>Total</th>
@@ -87,9 +86,8 @@ const OrderListScreen = () => {
                                 }
 
                             </tbody>
-                        </table>
-                    </div>
-                </div>
+                    </table>
+                </div >
             }
         </>
     );
