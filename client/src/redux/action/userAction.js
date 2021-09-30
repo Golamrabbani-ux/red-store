@@ -370,8 +370,7 @@ export const userUpdateByAdmin = (id, payload, navigate) => {
                     'Authorization': `Bearer ${userInfo?.token}`
                 }
             }
-            const {data} = await axios.put(`/api/users/${id}`, payload, config);
-            console.log(data);
+            await axios.put(`/api/users/${id}`, payload, config);
 
             dispatch({ type: USER_UPDATE_SUCCESS });
             dispatch({ type:USER_UPDATE_RESET});

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-hot-toast';
 import OrderSummary from '../components/OrderSummary';
 import { shippingAddressSave } from '../redux/action/cartAction';
 import { useNavigate } from 'react-router';
