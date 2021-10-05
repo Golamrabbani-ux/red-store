@@ -50,20 +50,25 @@ const HomeScreen = () => {
                     }
                 </div>
             }
-            <div
-                style={{
-                    height: '60vh',
-                    display:'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}
-            >
-                {error && <span className="error">{error.message}</span>}
-                {
-                    products.length === 0 && !loading && !error &&
-                    <h2 className="error">Products not found!</h2>
-                }
-            </div>
+
+            {
+                // eslint-disable-next-line no-mixed-operators
+                error || products.length === 0 &&
+                <div
+                    style={{
+                        height: '60vh',
+                        display:'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}
+                >
+                    {error && <span className="error">{error.message}</span>}
+                    {
+                        products.length === 0 && !loading && !error &&
+                        <h2 className="error">Products not found!</h2>
+                    }
+                </div>
+            }
         </>
     );
 };
