@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { backendApi } from '../../api';
 import { CART_RESET, RESET_PAYMENT_METHOD } from '../constants/cartConstants';
 import {
     ORDER_CREATE_FAIL,
@@ -35,7 +36,7 @@ export const orderCreate = (order, navigate) => {
                 }
             }
 
-            const { data } = await axios.post('/api/create-order', order, config);
+            const { data } = await axios.post(`${backendApi}/api/create-order`, order, config);
             dispatch({
                 type: ORDER_CREATE_SUCCESS,
                 payload: data
@@ -69,7 +70,7 @@ export const getOrderById = (id) => {
                 }
             }
 
-            const { data } = await axios.get(`/api/orders/${id}`, config);
+            const { data } = await axios.get(`${backendApi}/api/orders/${id}`, config);
             dispatch({
                 type: ORDER_DETAILS_SUCCESS,
                 payload: data
@@ -98,7 +99,7 @@ export const orderPay = (orderId, paymentResult) => {
                 }
             }
 
-            const { data } = await axios.put(`/api/orders/${orderId}/pay`, paymentResult, config);
+            const { data } = await axios.put(`${backendApi}/api/orders/${orderId}/pay`, paymentResult, config);
             dispatch({
                 type: ORDER_PAY_SUCCESS,
                 payload: data
@@ -127,7 +128,7 @@ export const myOrderList = () => {
                 }
             }
 
-            const { data } = await axios.get(`/api/orders/my-order`, config);
+            const { data } = await axios.get(`${backendApi}/api/orders/my-order`, config);
             dispatch({
                 type: MY_ORDER_LIST_SUCCESS,
                 payload: data
@@ -156,7 +157,7 @@ export const orderList = () => {
                 }
             }
 
-            const { data } = await axios.get(`/api/allorders`, config);
+            const { data } = await axios.get(`${backendApi}/api/allorders`, config);
             dispatch({
                 type: GET_ORDER_SUCCESS,
                 payload: data
@@ -185,7 +186,7 @@ export const orderDelever = (orderId) => {
                 }
             }
 
-            await axios.put(`/api/orders/${orderId}/delever`,{}, config);
+            await axios.put(`${backendApi}/api/orders/${orderId}/delever`,{}, config);
             dispatch({ type: ORDER_DELEVER_REQUEST });
             dispatch(getOrderById(orderId));
             dispatch({ type: ORDER_DELEVER_RESET });

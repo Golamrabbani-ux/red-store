@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { backendApi } from '../../api';
 import {
     CREATE_REVIEW_FAIL,
     CREATE_REVIEW_REQUEST,
@@ -23,10 +24,11 @@ import {
 } from '../constants/productsConstants';
 
 export const listProducts = (keyword= '') => {
+    console.log("EACT_APP_SERVER_API",backendApi);
     return async dispatch => {
         try {
             dispatch({ type: PRODUCT_LIST_REQUEST });
-            const { data } = await axios.get(`/api/products?keyword=${keyword}`);
+            const { data } = await axios.get(`${backendApi}/api/products?keyword=${keyword}`);
             dispatch({
                 type: PRODUCT_LIST_SUCCESS,
                 payload: data
@@ -45,7 +47,7 @@ export const productDetails = (id) => {
     return async dispatch => {
         try {
             dispatch({ type: PRODUCT_DETAILS_REQUEST });
-            const { data } = await axios.get(`/api/products/${id}`);
+            const { data } = await axios.get(`${backendApi}/api/products/${id}`);
             dispatch({
                 type: PRODUCT_DETAILS_SUCCESS,
                 payload: data
@@ -73,7 +75,7 @@ export const deleteProduct = (id) => {
                 }
             }
 
-            const { data } = await axios.delete(`/api/products/${id}`, config);
+            const { data } = await axios.delete(`${backendApi}/api/products/${id}`, config);
             dispatch({ type: PRODUCT_DELETE_SUCCESS })
             dispatch(listProducts())
             toast.success(data?.message)
@@ -102,7 +104,7 @@ export const createProduct = () => {
                 }
             }
 
-            const { data } = await axios.post(`/api/products`, {}, config);
+            const { data } = await axios.post(`${backendApi}/api/products`, {}, config);
             dispatch({
                 type: PRODUCT_CREATE_SUCCESS,
                 payload: data
@@ -132,7 +134,7 @@ export const updateProduct = (data) => {
                 }
             }
 
-            await axios.put(`/api/products/${data?.id}`, data, config);
+            await axios.put(`${backendApi}/api/products/${data?.id}`, data, config);
             dispatch({ type: PRODUCT_UPDATE_SUCCESS })
             dispatch(listProducts())
         } catch (error) {
@@ -159,7 +161,7 @@ export const createReview = (productId, payload) => {
                 }
             }
 
-            const { data } = await axios.post(`/api/products/${productId}/reviews`, payload, config);
+            const { data } = await axios.post(`${backendApi}/api/products/${productId}/reviews`, payload, config);
             toast.success(data?.message)
             dispatch({ type: CREATE_REVIEW_SUCCESS });
             dispatch({type: CREATE_REVIEW_RESET})

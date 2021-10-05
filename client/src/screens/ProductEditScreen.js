@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
+import { backendApi } from '../api';
 import Loader from '../components/Loader';
 import { productDetails, updateProduct } from '../redux/action/productsAction';
 import { PRODUCT_UPDATE_RESET } from '../redux/constants/productsConstants';
@@ -47,7 +48,7 @@ const ProductEditScreen = () => {
         const file = e.target.files[0];
         const formData = new FormData();
         formData.append('image', file);
-        const {data} = await axios.post(`/api/uploads`, formData);
+        const {data} = await axios.post(`${backendApi}/api/uploads`, formData);
         setImage(JSON.stringify(data))
     }
 

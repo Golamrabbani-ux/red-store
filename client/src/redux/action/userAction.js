@@ -1,5 +1,6 @@
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { backendApi } from '../../api';
 import { MY_ORDER_LIST_RESET } from '../constants/orderConstants';
 import {
     ACTIVE_USER_FAIL,
@@ -48,7 +49,7 @@ export const userLogin = (userInfo) => {
     return async dispatch => {
         try {
             dispatch({ type: USER_LOGIN_REQUEST })
-            const { data } = await axios.post('/api/users/login', userInfo);
+            const { data } = await axios.post(`${backendApi}/api/users/login`, userInfo);
             dispatch({
                 type: USER_LOGIN_SUCCESS,
                 payload: data
@@ -68,7 +69,7 @@ export const userRegister = (userInfo) => {
     return async dispatch => {
         try {
             dispatch({ type: USER_REGISTER_REQUEST })
-            const { data } = await axios.post('/api/users/register', userInfo);
+            const { data } = await axios.post(`${backendApi}/api/users/register`, userInfo);
             dispatch({
                 type: USER_REGISTER_SUCCESS,
                 payload: data?.message
@@ -88,7 +89,7 @@ export const activeUser = (token) => {
     return async dispatch => {
         try {
             dispatch({ type: ACTIVE_USER_REQUEST })
-            const { data } = await axios.post(`/api/users/active/${token}`);
+            const { data } = await axios.post(`${backendApi}/api/users/active/${token}`);
             dispatch({
                 type: ACTIVE_USER_SUCCESS,
                 payload: data
@@ -111,7 +112,7 @@ export const googleLogin = (tokenId) => {
     return async dispatch => {
         try {
             dispatch({ type: GOOGLE_LOGIN_REQUEST })
-            const { data } = await axios.post('/api/users/googlelogin', { tokenId });
+            const { data } = await axios.post(`${backendApi}/api/users/googlelogin`, { tokenId });
             dispatch({
                 type: GOOGLE_LOGIN_SUCCESS,
                 payload: data
@@ -135,7 +136,7 @@ export const facebookLogin = (payload) => {
     return async dispatch => {
         try {
             dispatch({ type: FACEBOOK_LOGIN_REQUEST })
-            const { data } = await axios.post('/api/users/facebooklogin', {
+            const { data } = await axios.post(`${backendApi}/api/users/facebooklogin`, {
                 accessToken: payload?.accessToken,
                 userID: payload?.userID
             });
@@ -162,7 +163,7 @@ export const userForgotPassword = (email, navigate) => {
     return async dispatch => {
         try {
             dispatch({ type: USER_FORGOT_PASSWORD_REQUEST })
-            const { data } = await axios.put('/api/users/forgotpassword', { email });
+            const { data } = await axios.put(`${backendApi}/api/users/forgotpassword`, { email });
             dispatch({
                 type: USER_FORGOT_PASSWORD_SUCCESS,
                 payload: data?.message
@@ -183,7 +184,7 @@ export const userUpdatePassword = (code, password, navigate) => {
     return async dispatch => {
         try {
             dispatch({ type: USER_UPDATE_PASSWORD_REQUEST })
-            const { data } = await axios.put('/api/users/forgotpasswordactivation', {
+            const { data } = await axios.put(`${backendApi}/api/users/forgotpasswordactivation`, {
                 uniqueNumber: code,
                 password
             });
@@ -215,7 +216,7 @@ export const getUserDetails = () => {
                     'Authorization': `Bearer ${userInfo?.token}`
                 }
             }
-            const { data } = await axios.get('/api/user/profile', config);
+            const { data } = await axios.get(`${backendApi}/api/user/profile`, config);
             dispatch({
                 type: GET_USER_DETAILS_SUCCESS,
                 payload: data
@@ -242,7 +243,7 @@ export const userUpdateProfile = (user, setShow) => {
                     'Authorization': `Bearer ${userInfo?.token}`
                 }
             }
-            const { data } = await axios.put('/api/user/profile', user, config);
+            const { data } = await axios.put(`${backendApi}/api/user/profile`, user, config);
             dispatch({
                 type: UPDATE_USER_PROFILE_SUCCESS,
                 payload: data
@@ -280,7 +281,7 @@ export const userLoginPasswordChange = (user, reset) => {
                     'Authorization': `Bearer ${userInfo?.token}`
                 }
             }
-            const { data } = await axios.put('/api/user/profile', user, config);
+            const { data } = await axios.put(`${backendApi}/api/user/profile`, user, config);
             dispatch({
                 type: UPDATE_USER_PROFILE_SUCCESS,
                 payload: data
@@ -318,7 +319,7 @@ export const userList = () => {
                     'Authorization': `Bearer ${userInfo?.token}`
                 }
             }
-            const { data } = await axios.get('/api/users', config);
+            const { data } = await axios.get(`${backendApi}/api/users`, config);
             dispatch({
                 type: USER_LIST_SUCCESS,
                 payload: data
@@ -345,7 +346,7 @@ export const userDelete = (id) => {
                     'Authorization': `Bearer ${userInfo?.token}`
                 }
             }
-            const { data } = await axios.delete(`/api/users/${id}`, config);
+            const { data } = await axios.delete(`${backendApi}/api/users/${id}`, config);
             toast.success(data?.message)
             dispatch({ type: USER_DELETE_SUCCESS })
         } catch (error) {
@@ -370,7 +371,7 @@ export const userUpdateByAdmin = (id, payload, navigate) => {
                     'Authorization': `Bearer ${userInfo?.token}`
                 }
             }
-            await axios.put(`/api/users/${id}`, payload, config);
+            await axios.put(`${backendApi}/api/users/${id}`, payload, config);
 
             dispatch({ type: USER_UPDATE_SUCCESS });
             dispatch({ type:USER_UPDATE_RESET});
@@ -399,7 +400,7 @@ export const getSingleUser = (id) => {
                     'Authorization': `Bearer ${userInfo?.token}`
                 }
             }
-            const { data } = await axios.get(`/api/users/${id}`, config);
+            const { data } = await axios.get(`${backendApi}/api/users/${id}`, config);
             dispatch({
                 type: GET_USER_DETAILS_SUCCESS,
                 payload: data
