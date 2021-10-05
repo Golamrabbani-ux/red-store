@@ -33,14 +33,18 @@ const LoginScreen = () => {
     }
 
     const responseGoogle = (response) => {
-        dispatch(googleLogin(response?.tokenId))
+        if(response.tokenId){
+            dispatch(googleLogin(response?.tokenId))
+        }
     }
 
     const facebookOnSuccess = async (response) => {
-        dispatch(facebookLogin({
-            accessToken: response?.authResponse?.accessToken,
-            userID: response?.authResponse?.userID,
-        }))
+        if(response.authResponse){
+            dispatch(facebookLogin({
+                accessToken: response?.authResponse?.accessToken,
+                userID: response?.authResponse?.userID,
+            }))
+        }
     }
 
     return (
