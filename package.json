@@ -5,9 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node backend/index",
-    "start:dev": "nodemon backend/index",
-    "server": "nodemon backend/index",
+    "start": "node backend/index.js",
+    "start:dev": "nodemon backend/index.js",
+    "server": "nodemon backend/index.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seeder",
