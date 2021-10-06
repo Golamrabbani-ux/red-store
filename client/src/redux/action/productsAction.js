@@ -24,7 +24,6 @@ import {
 } from '../constants/productsConstants';
 
 export const listProducts = (keyword= '') => {
-    console.log("EACT_APP_SERVER_API",backendApi);
     return async dispatch => {
         try {
             dispatch({ type: PRODUCT_LIST_REQUEST });
