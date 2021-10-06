@@ -36,7 +36,7 @@ app.use(notFound)
 app.use(errorHandler)
 
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Example app listening on ${process.env.NODE_ENV} at http://localhost:${PORT}`.yellow.bold)
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+    console.log(`Example app listening on ${process.env.NODE_ENV} at http://localhost:${port}`.yellow.bold)
 })
